@@ -153,6 +153,9 @@ The implementation uses **FastAPI** with **PostgreSQL** and is fully containeriz
                   │    PostgreSQL     │
                   │      :5432        │
                   └───────────────────┘
+
+```
+
 ---
 
 # 📁 Project Structure
@@ -487,7 +490,7 @@ CONFIRMED
    │
    ▼
 CANCELLED
-
+```
 
 ## Diagnostic Centres
 
@@ -827,10 +830,9 @@ To stop the application:
 docker compose down
 ```
 
-# 👩‍💻 Built By
+# 👩‍💻 Developed By 
 
 **Megha Sainia**  
-B.Tech - Final Year
 
 ---
 
