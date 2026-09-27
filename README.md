@@ -155,8 +155,7 @@ The implementation uses **FastAPI** with **PostgreSQL** and is fully containeriz
                   └───────────────────┘
 ---
 
-
-# 📁Project Structure
+# 📁 Project Structure
 
 ```text
 eve-healthcare-backend/
@@ -216,6 +215,7 @@ eve-healthcare-backend/
 ├── pytest.ini
 ├── requirements.txt
 └── README.md
+```
 
 The repository keeps application code, database migrations, scripts, and tests separated for maintainability.
 
@@ -239,6 +239,7 @@ Booking ──────────────► DiagnosticTest
   │ 1:N
   ▼
 Payment
+```
 
 ## User
 
@@ -251,6 +252,7 @@ User
 ├── password_hash
 ├── role
 └── timestamps
+```
 
 ## Diagnostic Centre
 
@@ -262,6 +264,7 @@ DiagnosticCentre
 ├── name
 ├── location
 └── timestamps
+```
 
 ## Diagnostic Test
 
@@ -274,8 +277,9 @@ DiagnosticTest
 ├── name
 ├── price
 └── timestamps
+```
 
-## Bookings
+## Booking
 
 Represents a diagnostic appointment.
 
@@ -289,6 +293,7 @@ Booking
 ├── amount
 ├── status
 └── timestamps
+```
 
 ## Payment
 
@@ -302,6 +307,9 @@ Payment
 ├── status
 ├── provider_event_id
 └── timestamps
+```
+
+Foreign keys and database constraints are used to maintain referential integrity.
 
 # 🔐 Authentication
 
@@ -334,6 +342,7 @@ Client
    │ Authorization: Bearer <token>
    ▼
 Protected API
+```
 
 # 🧪 Diagnostic Centres & Tests
 
@@ -383,6 +392,7 @@ CONFIRMED
    │
    ▼
 CANCELLED
+```
 
 # 💳 Simulated Payment Service
 
@@ -392,16 +402,21 @@ Payment endpoint:
 
 ```text
 POST /payments/
+```
 
 The simulated payment can result in:
 
 ```text
 SUCCESS
-OR
+```
+
+or:
+
+```text
 FAILED
+```
 
 The associated booking is updated based on the payment result.
-
 
 # 🔁 Payment Webhook
 
@@ -409,16 +424,16 @@ The application exposes a payment webhook:
 
 ```text
 POST /payments/webhook/
+```
 
-```text
-The webhook is designed to be idempotent.
+The webhook is designed to be **idempotent**.
 
 If the same payment event is delivered multiple times, it should not:
 
-Create duplicate payments
-Create duplicate bookings
-Incorrectly modify booking state
-Corrupt existing payment state
+- Create duplicate payments
+- Create duplicate bookings
+- Incorrectly modify booking state
+- Corrupt existing payment state
 
 A unique provider event identifier is used to identify already-processed events.
 
@@ -431,6 +446,48 @@ POST /auth/signup
 POST /auth/login
 GET  /auth/me
 ```
+
+## Diagnostic Centres
+
+```text
+GET /diagnostic-centers
+```
+
+## Diagnostic Tests
+
+```text
+GET /diagnostic-tests
+```
+
+# 📅 Booking System
+
+Authenticated users can book diagnostic tests.
+
+A booking contains:
+
+- Patient/user
+- Diagnostic test
+- Diagnostic centre
+- Appointment date/time
+- Amount
+- Booking status
+
+## Booking States
+
+```text
+PENDING
+   │
+   ├───────────────┐
+   │               │
+   ▼               ▼
+SUCCESS          FAILED
+   │
+   ▼
+CONFIRMED
+   │
+   ▼
+CANCELLED
+
 
 ## Diagnostic Centres
 
