@@ -155,7 +155,8 @@ The implementation uses **FastAPI** with **PostgreSQL** and is fully containeriz
                   └───────────────────┘
 ---
 
-# 📁 Project Structure
+
+# 📁Project Structure
 
 ```text
 eve-healthcare-backend/
@@ -217,3 +218,24 @@ eve-healthcare-backend/
 └── README.md
 
 The repository keeps application code, database migrations, scripts, and tests separated for maintainability.
+
+# 🗄 Database Design
+
+PostgreSQL is used as the primary database.
+
+## Entity Relationship
+
+```text
+User
+ │
+ │ 1:N
+ ▼
+Booking ──────────────► DiagnosticTest
+  │                          │
+  │                          │
+  │                          ▼
+  │                   DiagnosticCentre
+  │
+  │ 1:N
+  ▼
+Payment
