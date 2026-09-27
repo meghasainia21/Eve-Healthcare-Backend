@@ -153,3 +153,67 @@ The implementation uses **FastAPI** with **PostgreSQL** and is fully containeriz
                   │    PostgreSQL     │
                   │      :5432        │
                   └───────────────────┘
+---
+
+# 📁 Project Structure
+
+```text
+eve-healthcare-backend/
+│
+├── alembic/
+│   └── versions/
+│
+├── app/
+│   ├── api/
+│   │   ├── deps.py
+│   │   └── routes/
+│   │       ├── auth.py
+│   │       ├── bookings.py
+│   │       ├── diagnostic.py
+│   │       └── payments.py
+│   │
+│   ├── core/
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   └── security.py
+│   │
+│   ├── models/
+│   │   ├── user.py
+│   │   ├── diagnostic.py
+│   │   ├── booking.py
+│   │   └── payment.py
+│   │
+│   ├── schemas/
+│   │   ├── auth.py
+│   │   ├── diagnostic.py
+│   │   ├── booking.py
+│   │   └── payment.py
+│   │
+│   ├── services/
+│   │   ├── auth_service.py
+│   │   ├── booking_service.py
+│   │   └── payment_service.py
+│   │
+│   └── main.py
+│
+├── scripts/
+│   └── seed.py
+│
+├── tests/
+│   ├── conftest.py
+│   ├── test_auth.py
+│   ├── test_diagnostic.py
+│   ├── test_bookings.py
+│   └── test_payments.py
+│
+├── .env.example
+├── .gitignore
+├── alembic.ini
+├── docker-compose.yml
+├── Dockerfile
+├── Makefile
+├── pytest.ini
+├── requirements.txt
+└── README.md
+
+The repository keeps application code, database migrations, scripts, and tests separated for maintainability.
